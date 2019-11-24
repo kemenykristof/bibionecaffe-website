@@ -7,9 +7,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import BasketIcon from '@material-ui/icons/ShoppingBasketRounded';
-import { Fab, FormControl, FormControlLabel, FormLabel, Button, Radio, RadioGroup } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-import Remove from '@material-ui/icons/Remove';
+import { FormControl, FormControlLabel, FormLabel, Button, Radio, RadioGroup } from '@material-ui/core';
 import StoreContext from '../context/StoreContext';
 
 export default function ResponsiveDialog({ item }: { item: any }, { prices }: { prices: any }) {

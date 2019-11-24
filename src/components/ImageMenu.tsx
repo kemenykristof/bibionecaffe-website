@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { Link, NavLink } from 'react-router-dom';
-import Footer from './Footer';
-import ProductShowCase from './ProductShowCase';
-import NavMobile from './NavMobile';
-import { Badge } from '@material-ui/core';
-import StoreContext from '../context/StoreContext';
-import BasketIcon from '@material-ui/icons/ShoppingBasketRounded';
-import desktopImage from '../assets/pizzaDesktop.jpg';
-import mobileImage from '../assets/pizzaMobile.jpg';
+import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
+import { Link, NavLink } from "react-router-dom";
+import Footer from "./Footer";
+import ProductShowCase from "./ProductShowCase";
+import NavMobile from "./NavMobile";
+import { Badge } from "@material-ui/core";
+import StoreContext from "../context/StoreContext";
+import BasketIcon from "@material-ui/icons/ShoppingBasketRounded";
+import desktopImage from "../assets/pizzaDesktop.jpg";
+import mobileImage from "../assets/pizzaMobile.jpg";
 
 const ImgContainer = styled.div`
   height: 100vh;
@@ -43,18 +43,18 @@ const LogoStyle = styled.img`
 `;
 
 const StyledBasket = styled(BasketIcon)`
-color: white;
-cursor: pointer;
-align-items:center;
-  `;
+  color: white;
+  cursor: pointer;
+  align-items: center;
+`;
 
 const StyledLink = styled(Link)`
-position: absolute;
-top: 36px;
-right: 60px;
-color: white;
-cursor: pointer;
-  `;
+  position: absolute;
+  top: 36px;
+  right: 60px;
+  color: white;
+  cursor: pointer;
+`;
 
 const Content = styled.div`
   height: 100%;
@@ -102,10 +102,10 @@ export default function ImageMenu() {
   };
 
   useEffect(() => {
-    window.addEventListener('resize', handleWindowResize);
+    window.addEventListener("resize", handleWindowResize);
 
     return () => {
-      window.removeEventListener('resize', handleWindowResize);
+      window.removeEventListener("resize", handleWindowResize);
     };
   });
   return (
@@ -113,7 +113,7 @@ export default function ImageMenu() {
       <ImgContainer style={{ backgroundImage: `url(${imageUrl})` }}>
         <Content>
           <Link to="/">
-            <LogoStyle src={require('../assets/bibione.png')} alt="logo" />
+            <LogoStyle src={require("../assets/bibione.png")} alt="logo" />
           </Link>
 
           <StyledNavigation>

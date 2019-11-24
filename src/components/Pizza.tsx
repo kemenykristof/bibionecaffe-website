@@ -1,10 +1,9 @@
 import _ from "lodash";
-import React, { useContext, useState } from "react";
+import React, { useContext} from "react";
 import { Badge } from "@material-ui/core";
 import StoreContext from "../context/StoreContext";
 import PizzaOrderDialog from "./PizzaOrderDialog";
 import Footer from "./Footer";
-import EditIcon from "@material-ui/icons/EditOutlined";
 import styled from "styled-components";
 import Background from "../assets/pizzaDesktop.jpg";
 import { Link, NavLink } from "react-router-dom";
@@ -129,8 +128,6 @@ const StyledTableCellHeader = styled.td`
 export default function Pizza() {
   const { products } = useContext(StoreContext);
   const pizzaList: any = products.find((it: any) => it.type === "pizzak");
-
-  const [isEditing, setEditing] = useState(false);
   const context = useContext(StoreContext);
 
   if (!_.isPlainObject(pizzaList) || !Array.isArray(pizzaList.items)) {
@@ -196,12 +193,7 @@ export default function Pizza() {
                     <StyledTableCellHeader>{"30cm"}</StyledTableCellHeader>
                     <StyledTableCellHeader>{"35cm"}</StyledTableCellHeader>
                     <StyledTableCellHeader>{"50cm"}</StyledTableCellHeader>
-                    <StyledTableCellHeader>
-                      <EditIcon
-                        style={{ cursor: "pointer" }}
-                        onClick={() => setEditing(!isEditing)}
-                      />
-                    </StyledTableCellHeader>
+                    <StyledTableCellHeader></StyledTableCellHeader>
                   </tr>
                 </thead>
               );

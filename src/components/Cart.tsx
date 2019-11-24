@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
-import BasketIcon from '@material-ui/icons/ShoppingBasketRounded';
-import StoreContext from '../context/StoreContext';
-import { Fab, Badge } from '@material-ui/core';
-import Remove from '@material-ui/icons/Remove';
-import styled from 'styled-components';
-import { Link, NavLink } from 'react-router-dom';
-import Background from '../assets/pizzaDesktop.jpg';
-import NavMobile from './NavMobile';
-import AddIcon from '@material-ui/icons/Add';
-import Footer from './Footer';
+import React, { useContext } from "react";
+import BasketIcon from "@material-ui/icons/ShoppingBasketRounded";
+import StoreContext from "../context/StoreContext";
+import { Fab, Badge } from "@material-ui/core";
+import Remove from "@material-ui/icons/Remove";
+import styled from "styled-components";
+import { Link, NavLink } from "react-router-dom";
+import Background from "../assets/pizzaDesktop.jpg";
+import NavMobile from "./NavMobile";
+import AddIcon from "@material-ui/icons/Add";
+import Footer from "./Footer";
 
 const Content = styled.div`
   height: 100%;
@@ -25,12 +25,12 @@ const ImgContainer = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-position: absolute;
-top: 36px;
-right: 60px;
-color: white;
-cursor: pointer;
-  `;
+  position: absolute;
+  top: 36px;
+  right: 60px;
+  color: white;
+  cursor: pointer;
+`;
 
 const StyledText = styled.span`
   font-size: 25px;
@@ -75,10 +75,10 @@ const StyledNavigation = styled.div`
 `;
 
 const StyledBasket = styled(BasketIcon)`
-color: white;
-cursor: pointer;
-align-items:center;
-  `;
+  color: white;
+  cursor: pointer;
+  align-items: center;
+`;
 
 const StyledCartContainer = styled.div`
   display: flex;
@@ -133,7 +133,7 @@ export default function Cart(props: Props) {
     >
       <Content>
         <Link to="/">
-          <LogoStyle src={require('../assets/bibione.png')} alt="logo" />
+          <LogoStyle src={require("../assets/bibione.png")} alt="logo" />
         </Link>
         <StyledNavigation>
           <StyledNavLink to="/egeszseges">
@@ -165,46 +165,69 @@ export default function Cart(props: Props) {
           </Badge>
         </StyledLink>
         {store.cart.length <= 0 && (
-          <h1 style={{ textAlign: 'center', color: 'white' }}>
-            <BasketIcon fontSize="large" /> <span style={{ textShadow: '1px 1px #b0b0b0' }}> Az Ön kosara üres</span>
+          <h1 style={{ textAlign: "center", color: "white" }}>
+            <BasketIcon fontSize="large" />{" "}
+            <span style={{ textShadow: "1px 1px #b0b0b0" }}>
+              {" "}
+              Az Ön kosara üres
+            </span>
           </h1>
         )}
         <div
           style={{
-            overflow: 'auto',
+            overflow: "auto",
             maxHeight: 500
           }}
         >
           <ul
             style={{
               padding: 0,
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'center'
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              alignItems: "center"
             }}
           >
-            {store.cart.map((item) => (
+            {store.cart.map(item => (
               <StyledCartContainer>
                 <li
                   key={item.id}
                   style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    listStyle: 'none',
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    listStyle: "none",
                     padding: 15
                   }}
                 >
                   <div>
-                    <strong style={{ paddingRight: '10px', paddingLeft: '10px' }}>{item.name}</strong> - {item.price}Ft
+                    <strong
+                      style={{ paddingRight: "10px", paddingLeft: "10px" }}
+                    >
+                      {item.name}
+                    </strong>{" "}
+                    - {item.price}Ft
                     {/*                     {item.type === 'Frissensültek' && <span>Választott köret: </span>}
- */}{' '}
-                    <strong style={{ paddingRight: '10px', paddingLeft: '10px' }}>db: {item.quantity}</strong>
-                    <Fab onClick={() => context.addProductToCart(item)} size="small" color="secondary" aria-label="add">
+                     */}{" "}
+                    <strong
+                      style={{ paddingRight: "10px", paddingLeft: "10px" }}
+                    >
+                      db: {item.quantity}
+                    </strong>
+                    <Fab
+                      onClick={() => context.addProductToCart(item)}
+                      size="small"
+                      color="secondary"
+                      aria-label="add"
+                    >
                       <AddIcon />
                     </Fab>
-                    <Fab onClick={() => store.removeProductFromCart(item.id)} size="small" color="primary" aria-label="remove">
+                    <Fab
+                      onClick={() => store.removeProductFromCart(item.id)}
+                      size="small"
+                      color="primary"
+                      aria-label="remove"
+                    >
                       <Remove />
                     </Fab>
                   </div>
@@ -223,7 +246,7 @@ export default function Cart(props: Props) {
                 }, 0)}
                 Ft
               </StyledPriceBox>
-              <NavLink style={{ textDecoration: 'none' }} to="/rendeles">
+              <NavLink style={{ textDecoration: "none" }} to="/rendeles">
                 <StyledOrderButton>TOVÁBB A RENDELÉSHEZ</StyledOrderButton>
               </NavLink>
             </div>

@@ -1,9 +1,8 @@
 import _ from "lodash";
-import React, { useContext, useState } from "react";
+import React, { useContext} from "react";
 import { Badge } from "@material-ui/core";
 import StoreContext from "../context/StoreContext";
 import OrderDialog from "./OrderDialog";
-import EditIcon from "@material-ui/icons/EditOutlined";
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 import BasketIcon from "@material-ui/icons/ShoppingBasketRounded";
@@ -109,7 +108,6 @@ export default function HealthyFood() {
   const healthy_food: any = products.find(
     (it: any) => it.type === "egeszseges_etelek"
   );
-  const [isEditing, setEditing] = useState(false);
   const context = useContext(StoreContext);
 
   if (!_.isPlainObject(healthy_food) || !Array.isArray(healthy_food.items)) {
@@ -205,12 +203,7 @@ export default function HealthyFood() {
                         color: "forestgreen",
                         fontWeight: "bold"
                       }}
-                    >
-                      <EditIcon
-                        style={{ cursor: "pointer", color: "forestgreen" }}
-                        onClick={() => setEditing(!isEditing)}
-                      />
-                    </StyledTDataIcons>
+                    ></StyledTDataIcons>
                   </tr>
                 </th>
               );

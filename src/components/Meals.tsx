@@ -1,15 +1,15 @@
-import _ from 'lodash';
-import React, { useContext, useState } from 'react';
-import { TextField, Badge } from '@material-ui/core';
-import StoreContext from '../context/StoreContext';
-import OrderDialog from './OrderDialog';
-import Footer from './Footer';
-import EditIcon from '@material-ui/icons/EditOutlined';
-import styled from 'styled-components';
-import Background from '../assets/pizzaDesktop.jpg';
-import { Link, NavLink } from 'react-router-dom';
-import BasketIcon from '@material-ui/icons/ShoppingBasketRounded';
-import NavMobile from './NavMobile';
+import _ from "lodash";
+import React, { useContext, useState } from "react";
+import { TextField, Badge } from "@material-ui/core";
+import StoreContext from "../context/StoreContext";
+import OrderDialog from "./OrderDialog";
+import Footer from "./Footer";
+import EditIcon from "@material-ui/icons/EditOutlined";
+import styled from "styled-components";
+import Background from "../assets/pizzaDesktop.jpg";
+import { Link, NavLink } from "react-router-dom";
+import BasketIcon from "@material-ui/icons/ShoppingBasketRounded";
+import NavMobile from "./NavMobile";
 
 const Content = styled.div`
   height: 100%;
@@ -29,12 +29,12 @@ const ImgContainer = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-position: absolute;
-top: 36px;
-right: 60px;
-color: white;
-cursor: pointer;
-  `;
+  position: absolute;
+  top: 36px;
+  right: 60px;
+  color: white;
+  cursor: pointer;
+`;
 
 const StyledText = styled.span`
   font-size: 25px;
@@ -78,10 +78,10 @@ const StyledNavigation = styled.div`
 `;
 
 const StyledBasket = styled(BasketIcon)`
-color: white;
-cursor: pointer;
-align-items:center;
-  `;
+  color: white;
+  cursor: pointer;
+  align-items: center;
+`;
 
 const StyledTable = styled.table`
   border-collapse: separate;
@@ -92,7 +92,7 @@ const StyledTable = styled.table`
 `;
 
 const StyledTData = styled.td`
-  width: 40%;
+  width: 50%;
   font-size: 20px;
   text-align: justify;
   text-justify: inter-word;
@@ -101,7 +101,7 @@ const StyledTData = styled.td`
   }
 `;
 const StyledTDataIcons = styled.td`
-  width: 3%;
+  width: 60%;
   text-align: right;
   text-justify: inter-word;
   @media only screen and (max-width: 600px) {
@@ -110,7 +110,7 @@ const StyledTDataIcons = styled.td`
 `;
 
 const StyledTDMiddle = styled.td`
-  width: 40%;
+  width: 10%;
   text-align: right;
   text-justify: inter-word;
   white-space: nowrap;
@@ -122,14 +122,14 @@ const StyledTDMiddle = styled.td`
 export default function Meals() {
   const { products } = useContext(StoreContext);
   const context = useContext(StoreContext);
-  const etlap: any = products.find((it: any) => it.type === 'etlap');
+  const menu: any = products.find((it: any) => it.type === "etlap");
   const [isEditing, setEditing] = useState(false);
 
-  if (!_.isPlainObject(etlap) || !Array.isArray(etlap.items)) {
+  if (!_.isPlainObject(menu) || !Array.isArray(menu.items)) {
     return null;
   }
 
-  const grouped = etlap.items.reduce((prev: any, curr: any) => {
+  const grouped = menu.items.reduce((prev: any, curr: any) => {
     if (Array.isArray(prev[curr.type])) {
       return { ...prev, [curr.type]: [...prev[curr.type], curr] };
     }
@@ -144,7 +144,7 @@ export default function Meals() {
     >
       <Content>
         <Link to="/">
-          <LogoStyle src={require('../assets/bibione.png')} alt="logo" />
+          <LogoStyle src={require("../assets/bibione.png")} alt="logo" />
         </Link>
         <StyledNavigation>
           <StyledNavLink to="/egeszseges">
@@ -177,12 +177,12 @@ export default function Meals() {
         </StyledLink>
         <div
           style={{
-            marginTop: '40px',
+            marginTop: "40px",
             maxHeight: 750,
-            overflow: 'auto',
-            background: 'white',
+            overflow: "auto",
+            background: "white",
             opacity: 0.7,
-            borderRadius: '20px'
+            borderRadius: "20px"
           }}
         >
           <StyledTable>
@@ -192,17 +192,36 @@ export default function Meals() {
                 <thead>
                   <tr>
                     {isEditing ? (
-                      <StyledTData style={{ backgroundColor: 'white ', color: 'forestgreen', fontWeight: 'bold' }}>
+                      <StyledTData
+                        style={{
+                          backgroundColor: "white ",
+                          color: "forestgreen",
+                          fontWeight: "bold"
+                        }}
+                      >
                         <TextField type="text" defaultValue={type} />
                       </StyledTData>
                     ) : (
-                      <StyledTData style={{ backgroundColor: 'white', color: 'forestgreen', fontWeight: 'bold' }}>
+                      <StyledTData
+                        style={{
+                          backgroundColor: "white",
+                          color: "forestgreen",
+                          fontWeight: "bold"
+                        }}
+                      >
                         <strong>{type}</strong>
                       </StyledTData>
                     )}
-                    <StyledTData style={{ backgroundColor: 'white' }} />
-                    <StyledTDataIcons style={{ backgroundColor: 'white' }}>
-                      <EditIcon style={{ cursor: 'pointer', color: 'forestgreen' }} onClick={() => setEditing(!isEditing)} />
+
+                    <StyledTDataIcons style={{ backgroundColor: "white" }}>
+                      <EditIcon
+                        style={{
+                          cursor: "pointer",
+                          color: "forestgreen",
+                          float: "right"
+                        }}
+                        onClick={() => setEditing(!isEditing)}
+                      />
                     </StyledTDataIcons>
                   </tr>
                 </thead>
@@ -212,18 +231,30 @@ export default function Meals() {
                   <tbody>
                     <tr key={item.id}>
                       {isEditing ? (
-                        <StyledTData style={{ color: 'black', fontWeight: 'bold' }}>
+                        <StyledTData
+                          style={{ color: "black", fontWeight: "bold" }}
+                        >
                           <TextField type="text" defaultValue={item.name} />
                         </StyledTData>
                       ) : (
-                        <StyledTData style={{ color: 'black', fontWeight: 'bold' }}>{item.name}</StyledTData>
+                        <StyledTData
+                          style={{ color: "black", fontWeight: "bold" }}
+                        >
+                          {item.name}
+                        </StyledTData>
                       )}
                       {isEditing ? (
-                        <StyledTDMiddle style={{ color: 'black', fontWeight: 'bold' }}>
+                        <StyledTDMiddle
+                          style={{ color: "black", fontWeight: "bold" }}
+                        >
                           <TextField type="text" defaultValue={item.price} />
                         </StyledTDMiddle>
                       ) : (
-                        <StyledTDMiddle style={{ color: 'black', fontWeight: 'bold' }}>{item.price} Ft</StyledTDMiddle>
+                        <StyledTDMiddle
+                          style={{ color: "black", fontWeight: "bold" }}
+                        >
+                          {item.price} Ft
+                        </StyledTDMiddle>
                       )}
                       <StyledTDataIcons>
                         <OrderDialog item={item} />

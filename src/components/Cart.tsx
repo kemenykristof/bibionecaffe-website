@@ -205,10 +205,8 @@ export default function Cart(props: Props) {
                       style={{ paddingRight: "10px", paddingLeft: "10px" }}
                     >
                       {item.name}
-                    </strong>{" "}
+                    </strong>
                     - {item.price}Ft
-                    {/*                     {item.type === 'Frissensültek' && <span>Választott köret: </span>}
-                     */}{" "}
                     <strong
                       style={{ paddingRight: "10px", paddingLeft: "10px" }}
                     >

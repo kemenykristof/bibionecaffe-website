@@ -1,5 +1,5 @@
 import _ from "lodash";
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import { Badge } from "@material-ui/core";
 import StoreContext from "../context/StoreContext";
 import PizzaOrderDialog from "./PizzaOrderDialog";
@@ -141,8 +141,6 @@ export default function Pizza() {
     return { ...prev, [curr.type]: [curr] };
   }, {});
 
-  console.log(grouped);
-
   return (
     <ImgContainer
       style={{
@@ -183,11 +181,11 @@ export default function Pizza() {
         </StyledLink>
         <StyledTableContainer>
           <StyledTable>
-            {Object.keys(grouped).map((type: string) => {
+            {Object.keys(grouped).map((type: string, index: any) => {
               const result = [];
               result.push(
                 <thead>
-                  <tr>
+                  <tr key={index}>
                     <StyledTableCellHeader>{type}</StyledTableCellHeader>
                     <StyledTableCellHeader>{"25cm"}</StyledTableCellHeader>
                     <StyledTableCellHeader>{"30cm"}</StyledTableCellHeader>

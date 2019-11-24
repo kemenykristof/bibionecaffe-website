@@ -232,7 +232,7 @@ export default function Drinks() {
           <tr>
             <td
               style={{
-                backgroundColor: "dimgrey ",
+                
                 color: "white",
                 fontSize: "14px",
                 fontWeight: "bold"
@@ -253,9 +253,9 @@ export default function Drinks() {
               />
             </td>
 
-            <td style={{ backgroundColor: "dimgrey" }} />
-            <td style={{ backgroundColor: "dimgrey" }} />
-            <td style={{ backgroundColor: "dimgrey" }}>
+            <td />
+            <td />
+            <td>
               <EditIcon
                 style={{ cursor: "pointer" }}
                 onClick={() => {
